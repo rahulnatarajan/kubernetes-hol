@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tomcat-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+      - name: tomcat
+        image: rahulna/dockerapp:v5
+        ports:
+        - name: tomcat-port
+          containerPort: 5000
+      - name: redis
+        image: redis:3.2.0
+        ports:
+        - name: redis-port
+          containerPort: 6379

@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tomred-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tomred
+    spec:
+      containers:
+      - name: k8s-demo
+        image: rahulna/dockerapp:v5
+        ports:
+        - name: tomred-port
+          containerPort: 5000
